@@ -62,7 +62,8 @@ Aqui está um exemplo de configuração Terraform usando este módulo:
 
 ```hcl
 module "vpc" {
-  source = "path/to/this/module"
+  source  = "LucasCloudUniverse/vpc/aws"
+  version = "1.0.0"
 
   project_name          = "meu-projeto"
   region                = "us-west-2"
