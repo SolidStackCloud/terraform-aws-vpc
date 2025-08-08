@@ -9,11 +9,11 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_vpc_ipv4_cidr_block_association" "main" {
-  count        = var.create_additional_cidr ? 1 : 0
+  count      = var.create_additional_cidr ? 1 : 0
   vpc_id     = aws_vpc.main.id
   cidr_block = var.additional_cidr
 
-  depends_on = [ aws_vpc.main ]
+  depends_on = [aws_vpc.main]
 }
 
 resource "aws_vpc_endpoint" "s3" {
