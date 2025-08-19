@@ -36,6 +36,7 @@ resource "aws_ssm_parameter" "private_subnets" {
 }
 
 resource "aws_ssm_parameter" "pods_subnets" {
+  count = var.create_additional_cidr ? 1 : 0
   name  = "/${var.project_name}/pods-subnet-ids"
   type  = "StringList"
   value = join(",", aws_subnet.pods[*].id)
