@@ -2,7 +2,7 @@ resource "aws_subnet" "pods" {
   count             = var.create_additional_cidr ? var.subnet_number : 0
   vpc_id            = aws_vpc.main.id
   availability_zone = data.aws_availability_zones.main.names[count.index]
-  cidr_block        = cidrsubnet(var.additional_cidr, 8, count.index + var.subnet_number)
+  cidr_block        = cidrsubnet(var.additional_cidr, 4, count.index + var.subnet_number)
   tags = {
     Name = "${var.project_name}-pods-subnet-${count.index + 1}"
   }
